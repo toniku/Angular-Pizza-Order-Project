@@ -1,0 +1,56 @@
+<div *ngIf="pizza" class="row">
+    <div class="col-md-16">
+      <h2 *ngIf="pizza._id">Order Details</h2>
+      <h2 *ngIf="!pizza._id">New Order</h2>
+    </div>
+  </div>
+  <div *ngIf="pizza" class="row">
+    <form class="col-md-14">
+
+      <div class="form-group">
+        <label for="pizza-name">Pizza Name/Toppings</label>
+        <input class="form-control" name="pizza-pizzaname" [(ngModel)]="pizza.pizzaname" placeholder="Quattro Stagione/Pepperoni-Mushroom-"/>
+      </div>
+
+      <div class="form-group">
+        <label for="user-name">Name</label>
+        <input class="form-control" name="pizza-name" [(ngModel)]="pizza.name" placeholder="Firstname Lastname"/>
+      </div>
+
+      <div class="form-group">
+        <label for="order-email">Email</label>
+        <input class="form-control" name="pizza-email" [(ngModel)]="pizza.email" placeholder="your.email@address.com"/>
+      </div>
+
+      <div class="form-group">
+        <label for="order-email">Mobile</label>
+        <input class="form-control" name="pizza-phone" [(ngModel)]="pizza.phone" placeholder="+358 50 555 5585"/>
+      </div>
+
+      <div class="form-group">
+        <label for="order-address-city">City</label>
+        <input class="form-control" name="order-address-city" [(ngModel)]="pizza.address.city" placeholder="Oulu"/>
+      </div>
+
+      <div class="form-group">
+        <label for="order-address-street">Address</label>
+        <input class="form-control" name="order-address-street" [(ngModel)]="pizza.address.street" placeholder="Kotkantie 1"/>
+      </div>
+
+      <div>
+          <input type="checkbox" [checked]="pizza.panpizza" (change)="pizza.panpizza = !panpizza">
+          Pan Pizza (+3€)
+      </div>
+      <div>
+          <input type="checkbox" [checked]="pizza.familypizza" (change)="pizza.familypizza = !familypizza">
+          Family Size (+8€)
+      </div>
+      <br>
+
+      <button class="w3-button w3-blue w3-section" *ngIf="!pizza._id" (click)="createPizza(pizza)">Create order</button>
+      <button class="w3-button w3-blue w3-section" *ngIf="pizza._id" (click)="updatePizza(pizza)">Update order</button>
+      <button class="w3-button w3-red w3-section" *ngIf="pizza._id" (click)="deletePizza(pizza._id)">Cancel order</button>
+      
+    </form>
+  </div>
+  

@@ -1,0 +1,7 @@
+dd label input {
+    margin-right:10px;
+ }
+
+ form, label, p, h2 {
+    color: white !important;
+}
